@@ -1,0 +1,11 @@
+The following CSS code snippet demonstrates an uncommon error that can occur when using the `:focus-visible` pseudo-class:
+
+```css
+.my-element:focus-visible {
+  outline: 2px solid blue;
+}
+```
+
+This code appears correct, but it might not work as expected in some browsers or screen readers, particularly when the element is already focused programmatically.
+
+The problem is that the `:focus-visible` pseudo-class does not reliably determine which focus events are truly visible to the user and which are not. It may not be triggered by programmatic focus events, leading to the absence of the expected outline. In that specific case, the CSS rule would not apply, even though the element is focused.
