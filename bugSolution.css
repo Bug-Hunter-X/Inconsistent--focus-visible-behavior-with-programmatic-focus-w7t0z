@@ -1,0 +1,31 @@
+There's no single perfect solution, as the reliability of `:focus-visible` is still under development. However, you can improve the situation using JavaScript to detect if an element receives programmatic focus and then apply the styles manually.
+
+Here's an example demonstrating how to handle the problem in JavaScript:
+
+```javascript
+const element = document.getElementById('myElement');
+
+element.addEventListener('focus', () => {
+  // Check if focus is visible (this is a simplification, see below for more robust methods)
+  if (document.activeElement === element) {
+    element.classList.add('focused');
+  }
+});
+
+element.addEventListener('blur', () => {
+  element.classList.remove('focused');
+});
+```
+
+Then, use a CSS class to style the element:
+
+```css
+.focused {
+  outline: 2px solid blue;
+}
+```
+
+**Important considerations:**
+
+*   This example uses a simplified `if (document.activeElement === element)` check for focus visibility.  For more robust detection in various scenarios, consider using libraries or more sophisticated techniques. 
+*   Always test your solution thoroughly across different browsers and assistive technologies to ensure accessibility for all users.
